@@ -1,0 +1,40 @@
+package javaimplementation;
+
+public class searching_sorting {
+	//searching-> linear search O(n) and binary search O(logn)
+	//linear search:
+	public static boolean linsearch(int arr[], int itm) {
+		for (int i = 0; i < arr.length; i++) {
+			if (arr[i] == itm) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	//Binary search:
+	public static boolean binsearch(int arr[], int itm) {
+		int s=0;
+		int e=arr.length-1;
+		int mid;
+		while(s<=e) {
+			mid =(s+e)/2;
+			if(arr[mid]==itm) {
+				return true;
+			}
+			else if(arr[mid]<itm) {
+				s=mid+1;
+			}
+			else {
+				e=mid-1;
+			}
+			
+		}
+		return false;
+	}
+	public static void main(String[] args) {
+		int arr[] = { 1, 2, 3, 4, 5 };
+		System.out.println(binsearch(arr, 67));
+	}
+
+}

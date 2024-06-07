@@ -1,0 +1,22 @@
+package classprograms;
+
+public class p2 {
+	public static int lo(int arr[], int key, int i) {
+		
+		if (i == arr.length) {
+			return -1;
+		}
+		int isfound = lo(arr, key, i + 1);
+		if (isfound == -1 && arr[i] == key) {
+			return i;
+		}
+		return isfound;
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int a[] = { 1, 2, 3, 4, 3, 5, 6 };
+		System.out.println(lo(a, 3, 0));
+	}
+
+}

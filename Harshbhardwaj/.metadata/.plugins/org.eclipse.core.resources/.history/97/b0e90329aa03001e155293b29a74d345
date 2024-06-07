@@ -1,0 +1,90 @@
+package merryjane;
+
+import java.util.Scanner;
+
+public class precfo {
+	public static void agekey(int key[]) {
+		for (int i = 0; i < key.length; i++) {
+			key[i] = (key[i] * 10 + 5);
+		}
+
+	}
+
+	public static void lsearch(int arr[], int key) {
+		for (int i = 0; i < arr.length; i++) {
+			if (arr[i] == key) {
+				System.out.println("found");
+				break;
+			} else {
+				continue;
+			}
+		}
+	}
+
+	public static void lsstr(String arr[], String key) {
+		for (int i = 0; i < arr.length; i++) {
+			if (arr[i].equals(key)) {
+				System.out.println("found");
+				break;
+			} else {
+				continue;
+			}
+		}
+	}
+
+	public static int bsrch(int arr[], int key) {
+		int s = 0;
+		int e = arr.length - 1;
+		while (s <= e) {
+			int mid = (s + e) / 2;
+
+			if (arr[mid] == key) {
+
+				return mid;
+			} else if (arr[mid] < key) {
+				s = mid + 1;
+			} else {
+				e = mid - 1;
+			}
+		}
+		return -1;
+	}
+
+	public static void arrrev(int arr[]) {
+		int temp = 0, i = 0;
+		int j = arr.length - 1;
+		while (i < j) {
+			temp = arr[i];
+			arr[i] = arr[j];
+			arr[j] = temp;
+			i++;
+			j--;
+		}
+
+	}
+	public static void arrpair(int arr[]) {
+	for(int i=1;i<arr.length;i++) {
+		for(int j=i+1;j<arr.length;j++) {
+			System.out.print("("+ i+","+j+")");
+		}
+		System.out.println();	
+	}
+	}
+	public static void main(String[] args) {
+
+		int age[] = { 28, 31, 24, 15, 96, 733, 59 };
+		int arr1[] = { 12, 34, 56, 78, 90 };
+		String name[] = { "harsh", "bhardwaj", "sahil", "pahwa", "aastha", "arora" };
+		// agekey(age);
+		// lsearch(age, 96);
+		// lsstr(name, "bhardwaj");
+		// System.out.println(bsrch(arr1, 90));
+		//arrrev(age);
+		/*for (int k = 0; k < age.length - 1; k++) {
+			System.out.print(" " + age[k] + " ");*/
+		arrpair(arr1);
+		}
+
+	}
+
+

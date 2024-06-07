@@ -1,0 +1,48 @@
+package merryjane;
+
+class pen {
+	private String color;
+	private int tipsz;
+	private String company;
+
+	String getcolor() {
+		return this.color;
+	}
+	String getcompany() {
+	return this.company;	
+	}
+	int gettip() {
+		return this.tipsz;
+
+	}
+
+	void setcolor(String newcolor) {
+		this.color = newcolor;
+	}
+
+	void settip(int newtip) {
+		this.tipsz = newtip;
+	}
+
+	void setcompany(String a) {
+		this.company = a;
+	}
+
+}
+
+public class oops {
+
+	public static void main(String[] args) {
+		pen p1 = new pen();
+
+		p1.setcolor("blue");
+		p1.settip(5);
+		p1.setcompany("rorito");
+
+		pen p2 = new pen();
+		System.out.println(p1.getcolor());
+		System.out.println(p1.gettip());
+
+	}
+
+}

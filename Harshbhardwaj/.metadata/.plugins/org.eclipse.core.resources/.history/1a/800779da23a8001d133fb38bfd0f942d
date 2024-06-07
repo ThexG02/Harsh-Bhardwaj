@@ -1,0 +1,31 @@
+package merryjane;
+
+public class search2darray {
+public static boolean scsearcharr(int matrix[][],int key) {
+	for(int i=0;i<matrix.length-1;i++) {
+		for(int j=0;j<matrix[0].length;j++) {
+			int cell=matrix[0][matrix[0].length-1];
+			if(key==cell) {
+				return true;
+			}
+			else if(key<cell) {
+				j--;
+			}
+			else if(key>cell) {
+				i--;
+			}
+			else {
+				return false;
+			}
+			
+		}
+	}
+	
+	
+}
+	public static void main(String[] args) {
+int mat[][]= {{10,20,30,40},{15,25,35,45},{27,29,37,48},{32,33,39,50}};
+scsearcharr(mat,33);
+	}
+
+}

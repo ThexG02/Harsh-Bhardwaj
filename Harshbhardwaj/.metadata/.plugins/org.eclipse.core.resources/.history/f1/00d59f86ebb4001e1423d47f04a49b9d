@@ -1,0 +1,18 @@
+package javaimplementation;
+
+public class searching_sorting {
+	public static boolean linsearch(int arr[], int itm) {
+		for (int i = 0; i < arr.length; i++) {
+			if (arr[i] == itm) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public static void main(String[] args) {
+int arr[]= {1,2,3,4,5};
+System.out.println(linsearch(arr,67));
+	}
+
+}

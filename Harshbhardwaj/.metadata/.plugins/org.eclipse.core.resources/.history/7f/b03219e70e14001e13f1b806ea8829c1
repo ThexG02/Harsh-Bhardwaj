@@ -1,0 +1,102 @@
+package merryjane;
+
+public class linked_list {
+
+	// declaration/ creation of a new node by using class node and data members data and next
+	public static class Node {
+		int data;
+		Node next;
+
+		public Node(int data) {
+			this.data = data;
+			this.next = null;
+		}
+	}
+	
+	// static declaration of head tail and size of the ll
+	
+	public static Node head;
+	public static Node tail;
+	public static int size;
+	
+	// funtion to add a node at the head of the ll
+	
+	public static void addFirst(int data) {
+		// step 1
+		Node newnode = new Node(data);
+		size++;
+		if (head == null) {
+			head = tail = newnode;
+			return;
+		}
+		// step 2
+		newnode.next = head;
+		// step 3
+		head = newnode;
+	}
+
+	//function to add a node at tail of the ll
+	
+	public static void addLast(int data) {
+		// step 1
+		Node newnode= new Node(data);
+		size++;
+		if (head == null) {
+			head = tail = newnode;
+			return;
+		}
+		//step 2
+		tail.next=newnode;
+		//step 3
+		tail=newnode;
+
+	}
+	
+	//function to add a node at a given index of a ll
+	
+	public static void addMiddle(int idx, int data) {
+		if(idx==0) {
+			addFirst(data);
+		}
+		Node newnode = new Node(data);
+		size++;
+		Node temp;
+		temp=head;
+		int i=0;
+		while(i< idx-1) {
+			temp=temp.next;
+			i++;
+			}
+		newnode.next=temp.next;
+		temp.next=newnode;
+	}
+	
+	// funtion to print the linked list
+	
+	public static void printll() {
+		if(head==null) {
+			System.out.println(" ll is empty");
+			return;
+		}
+		Node temp = head;
+		while(temp!=null) {
+			System.out.print(temp.data+"->");
+			temp=temp.next;
+		}
+		System.out.print("null");
+		System.out.println();
+	}
+	
+	public static void main(String[] args) {
+		linked_list ll = new linked_list();
+		ll.addFirst(2);
+		ll.addFirst(1);
+		ll.addLast(3);
+		ll.addLast(4);
+		ll.printll();
+		ll.addMiddle(2, 69);
+		ll.printll(); //1->2->69->3->4-> null
+		System.out.println(ll.size);
+	}
+
+}

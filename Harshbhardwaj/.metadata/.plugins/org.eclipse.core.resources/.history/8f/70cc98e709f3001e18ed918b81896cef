@@ -1,0 +1,12 @@
+package javaimplementation;
+import java.util.*;
+public class practiceforjob {
+
+	public static void main(String[] args) {
+		String name ="harsh bhardwaj is from india";
+		for(int i=0;i<name.length();i++) {
+			System.out.print(name.charAt(i)+" ");
+		}
+	}
+
+}

@@ -1,0 +1,41 @@
+package merryjane;
+
+class pen{
+	private String color;
+	private int tipsz;
+	String getcolor(){
+		return this.color;
+	}
+	pen(){
+		System.out.println("non-parameterised constructor is called");
+	}
+	pen(int a){
+		System.out.println("parameterised constructor is called "+a);
+	}
+	
+	int gettip() {
+		return this.tipsz;
+		
+	}
+	  void setcolor(String newcolor) {
+	this.color=	newcolor;
+	}
+	  void settip(int newtip) {
+		  this.tipsz=newtip;
+	  }
+}
+public class oops {
+
+	public static void main(String[] args) {
+		pen p1=new pen();
+		pen p2=new p2(36);
+		p1.setcolor("blue");
+		System.out.println(p1.getcolor());
+		p1.settip(5);
+		System.out.println(p1.gettip());
+		p1.setcolor("yellow");
+		System.out.println(p1.getcolor() );
+
+	}
+
+}

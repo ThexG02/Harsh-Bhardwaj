@@ -1,0 +1,92 @@
+package javaimplementation;
+
+public class linkedlist {
+
+	public static class Node {
+		int data;
+		Node next;
+
+		public Node(int data) {
+			this.data = data;
+			this.next = null;
+		}
+	}
+
+	public static Node head;
+	public static Node tail;
+	public static int size;
+
+	public static void printll() {
+		if (head == null) {
+			System.out.println("the linked list is empty");
+			return;
+		}
+		Node temp = head;
+		while (temp != null) {
+			System.out.print(temp.data + "->");
+			temp = temp.next;
+		}
+		System.out.print("null");
+		
+	}
+
+	public static void addfirst(int data) {
+		Node newnode = new Node(data);
+		if (head == null) {
+			head = tail = newnode;
+			return;
+		}
+		newnode.next = head;
+		head = newnode;
+	}
+	public static void addlast(int data) {
+		Node newnode = new Node(data); 
+		if(head==null) {
+			head=tail=newnode;
+			return;
+		}
+		
+		//
+		newnode.next=null;
+		tail=newnode;
+	}
+	public static void addmiddle(int data,int idx) {
+		Node newnode= new Node(data);
+		int i=0;
+		Node temp= head;
+		while(i<idx-1) {
+			temp=temp.next;
+			i++;
+		}
+		newnode.next=temp.next;
+		temp.next=newnode;
+	}
+	public static void llrev() {
+		Node prev=null;
+		Node curr=head=tail;
+		Node next;
+		while(curr!=null) {
+			next=curr.next;
+			curr.next=prev;
+			prev=curr;
+			curr=next;
+		}
+		head=prev;
+	}
+
+	public static void main(String[] args) {
+		linkedlist ll = new linkedlist();
+		linkedlist ll2= new linkedlist();
+		for(int i=5;i>=1;i--) {
+			ll.addfirst(i);
+		}
+		for(int j=1;j<=5;j++) {
+			ll2.addlast(j);
+		}
+	
+		ll2.llrev();
+		ll2.printll();
+
+	}
+
+}

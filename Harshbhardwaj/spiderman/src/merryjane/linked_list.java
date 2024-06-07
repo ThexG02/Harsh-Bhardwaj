@@ -1,0 +1,277 @@
+package merryjane;
+
+public class linked_list {
+
+	// declaration/ creation of a new node by using class node and data members data
+	// and next
+	public static class Node {
+		int data;
+		Node next;
+
+		public Node(int data) {
+			this.data = data;
+			this.next = null;
+		}
+	}
+
+	// static declaration of head tail and size of the ll
+	public static Node head;
+	public static Node tail;
+	public static int size;
+
+	// funtion to add a node at the head of the ll
+
+	public static void addFirst(int data) {
+		// step 1
+		Node newnode = new Node(data);
+		size++;
+		if (head == null) {
+			head = tail = newnode;
+			return;
+		}
+		// step 2
+		newnode.next = head;
+		// step 3
+		head = newnode;
+	}
+
+	// function to add a node at tail of the ll
+
+	public static void addLast(int data) {
+		// step 1
+		Node newnode = new Node(data);
+		size++;
+		if (head == null) {
+			head = tail = newnode;
+			return;
+		}
+		// step 2
+		tail.next = newnode;
+		// step 3
+		tail = newnode;
+
+	}
+
+	// function to add a node at a given index of a ll
+
+	public static void addMiddle(int idx, int data) {
+		if (idx == 0) {
+			addFirst(data);
+		}
+		Node newnode = new Node(data);
+		size++;
+		Node temp;
+		temp = head;
+		int i = 0;
+		while (i < idx - 1) {
+			temp = temp.next;
+			i++;
+		}
+		newnode.next = temp.next;
+		temp.next = newnode;
+	}
+
+	// funtion to print the linked list
+
+	public static void printll() {
+		if (head == null) {
+			System.out.println(" ll is empty");
+			return;
+		}
+		Node temp = head;
+		while (temp != null) {
+			System.out.print(temp.data + "->");
+			temp = temp.next;
+		}
+		System.out.print("null");
+		System.out.println();
+	}
+
+	// to remove from the head of the ll
+
+	public static int remove_F() {
+		if (size == 0) {
+			System.out.println("ll is empty");
+			return Integer.MIN_VALUE;
+		} else if (size == 1) {
+			int val = head.data;
+			head = tail = null;
+			size--;
+			return val;
+		}
+		int val = head.data;
+		head = head.next;
+		size--;
+		return val;
+
+	}
+
+	// to remove a node from the end of the ll
+
+	public static int remove_L() {
+		if (size == 0) {
+			System.out.println("the ll is empty");
+			return Integer.MIN_VALUE;
+		} else if (size == 1) {
+			int val = head.data;
+			head = tail = null;
+			size--;
+
+			return val;
+		}
+		Node prev = head;
+		for (int i = 0; i < size - 2; i++) {
+			prev = prev.next;
+		}
+		int val = prev.next.data;
+		prev.next = null;
+		tail = prev;
+		size--;
+		return val;
+	}
+
+	// to search in a ll by using linear search
+
+	public static int itr_search(int key) {
+		Node temp = head;
+		int i = 0;
+		while (temp != null) {
+			if (temp.data == key) {
+				return i;
+			}
+			temp = temp.next;
+			i++;
+		}
+		return -1;
+
+	}
+
+	// to search from a ll using recurssion
+
+	public static int rec_search(Node head, int key) {
+		Node temp = head;
+		if (temp == null) {
+			return -1;
+		}
+		if (temp.data == key) {
+			return 0;
+		}
+		int idx = rec_search(temp.next, key);
+		if (idx == -1) {
+			return -1;
+		}
+		return idx + 1;
+
+	}
+
+	// to reverse a ll
+	public static void revll() {
+		Node prev = null;
+		Node curr = tail = head;
+		Node next;
+		while (curr != null) {
+			next = curr.next;
+			curr.next = prev;
+			prev = curr;
+			curr = next;
+		}
+		head = prev;
+	}
+
+	public static boolean checkcycle() {
+		Node slow = head;
+		Node fast = head;
+		while (fast != null && fast.next != null) {
+			
+			slow = slow.next;
+			fast = fast.next.next;
+			if(slow==fast) {
+				return true;
+			}
+		}
+		return false;
+
+	}
+
+	public static void removecycle() {
+		Node slow = head;
+		Node fast = head;
+		boolean cycle = false;
+		while (fast != null && fast.next != null) {
+			
+			slow = slow.next;
+			fast = fast.next.next;
+			if(slow==fast) {
+				cycle= true;
+				break;
+			}
+		}
+		if(cycle==false) {
+			return;
+		}
+		slow=head;
+		Node prev= null;
+		while(slow!=fast) {
+			prev=fast;
+			slow=slow.next;
+			fast=fast.next;
+		}
+		prev.next=null;
+		
+	}
+	
+	public static void deltenthfromend(int n) {
+		int sz = 0;
+		Node temp = head;
+		while (temp != null) {
+			temp = temp.next;
+			sz++;
+		}
+
+		if (n == sz) {
+			head = head.next;
+			return;
+		}
+		int i = 1;
+		int itofind = sz - n;
+		Node prev = head;
+		while (i < itofind) {
+			prev = prev.next;
+			i++;
+		}
+		prev.next = prev.next.next;
+	}
+
+	public static void main(String[] args) {
+		linked_list ll = new linked_list();
+		ll.addFirst(2);
+		ll.addFirst(1);
+		ll.addLast(3);
+		ll.addLast(4);
+		// ll.printll();
+		ll.addMiddle(2, 69);
+//		ll.printll(); //1->2->69->3->4-> null
+//		ll.remove_F();
+//		ll.printll();
+//		ll.remove_L();
+		ll.printll();
+		// System.out.println(ll.rec_search(head, 69));
+		// System.out.println(ll.rec_search(head, 10));
+		//ll.revll();
+		//ll.deltenthfromend(3);
+		//ll.printll();
+//		System.out.println(ll.checkcycle());
+//		ll.removecycle();
+//		Node he=new Node(1);
+//		he.next = new Node(2);
+//		he.next.next= new Node(3);
+//		he.next.next.next= he;
+//		ll.printll();
+	
+	
+		
+		
+		System.out.println(ll.size);
+	}
+
+}

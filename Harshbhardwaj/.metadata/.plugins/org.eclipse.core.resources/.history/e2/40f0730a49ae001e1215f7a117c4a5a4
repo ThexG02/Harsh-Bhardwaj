@@ -1,0 +1,55 @@
+package javaimplementation;
+
+public class linkedlist {
+
+	public static class Node {
+		int data;
+		Node next;
+
+		public Node(int data) {
+			this.data = data;
+			this.next = null;
+		}
+	}
+
+	public static Node head;
+	public static Node tail;
+	public static int size;
+
+	public static void printll() {
+		if (head == null) {
+			System.out.println("the linked list is empty");
+			return;
+		}
+		Node temp = head;
+		while (temp != null) {
+			System.out.print(temp.data + "->");
+			temp = temp.next;
+		}
+		System.out.print("null");
+		
+	}
+
+	public static void addfirst(int data) {
+		Node newnode = new Node(data);
+		if (head == null) {
+			head = tail = newnode;
+			return;
+		}
+		newnode.next = head;
+		head = newnode;
+	}
+	public static void addlast(int data) {
+		
+	}
+
+	public static void main(String[] args) {
+		linkedlist ll = new linkedlist();
+		for(int i=5;i>=1;i++) {
+			ll.addfirst(i);
+		}
+		ll.printll();
+
+	}
+
+}

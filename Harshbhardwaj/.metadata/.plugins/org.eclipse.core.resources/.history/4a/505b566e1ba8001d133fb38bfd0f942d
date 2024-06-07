@@ -1,0 +1,15 @@
+package merryjane;
+
+public class diagonalsum {
+	public static void diagonalsum(int matrix [][]) {
+		int sum=0;
+		for(int i=0;i<matrix.length;i++) {
+		
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
